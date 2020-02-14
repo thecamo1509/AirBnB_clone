@@ -20,6 +20,7 @@ class BaseModel():
                 else:
                     if (key != '__class__'):
                         setattr(self, key, value)
+                    storage.new(self)
 
         else:
             self.id = str(uuid.uuid4())
@@ -40,6 +41,3 @@ class BaseModel():
         new_dir["created_at"] = new_dir["created_at"].isoformat()
         new_dir["updated_at"] = new_dir["updated_at"].isoformat()
         return (new_dir)
-
-    if storage.new() is not dict:
-        storage.new(self, self.to_dict())
