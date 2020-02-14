@@ -2,11 +2,11 @@
 
 import uuid
 from datetime import datetime
+from models.__init__ import storage
 
 
 class BaseModel():
     def __init__(self, *args, **kwargs):
-
         if (kwargs):
             for key, value in kwargs.items():
                 if key == 'id':
@@ -32,6 +32,7 @@ class BaseModel():
 
     def save(self):
         self.updated_at = datetime.now()
+        storage.save()
 
     def to_dict(self):
         new_dir = self.__dict__.copy()
@@ -39,3 +40,6 @@ class BaseModel():
         new_dir["created_at"] = new_dir["created_at"].isoformat()
         new_dir["updated_at"] = new_dir["updated_at"].isoformat()
         return (new_dir)
+
+    if storage.new() is not dict:
+        storage.new(self, self.to_dict())
