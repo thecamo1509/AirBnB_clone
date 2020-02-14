@@ -1,4 +1,5 @@
 import json
+import os.path as path
 
 
 class FileStorage():
@@ -7,20 +8,21 @@ class FileStorage():
         self.__objects = {}
 
     def all(self):
-        return self.__objects
+        return(self.__objects)
 
     def new(self, obj):
-        self.__objects[self.__class__.__name__] = obj
-
+        ids = obj["id"]
+        name = obj["__class__"]
+        complete_name = name + "." + ids
+        self.__objects[complete_name] = obj
+        
     def save(self):
         myjson = json.dumps(self.__objects)
         with open(self.__file_path, "w") as f:
             f.write(myjson)
 
     def reload(self):
-        try:
+        if path.isfile(self.__file_path):
             with open(self.__file_path, "r") as f:
-                file = f.read()
-                return file
-        except FileNotFoundError:
-            return
+                files= f.read()
+                self.__objects = json.loads(files)
