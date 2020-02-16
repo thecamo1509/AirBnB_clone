@@ -1,7 +1,5 @@
 #!/usr/bin/python3
 
-
-
 import cmd
 import models
 from models.base_model import BaseModel
@@ -12,14 +10,17 @@ from models.amenity import Amenity
 from models.place import Place
 from models.review import Review
 
-all_class = {"BaseModel": BaseModel, "User": User, "State" : State,
-        "City" : City, "Amenity" : Amenity, "Place" : Place, "Review": Review}
+all_class = {"BaseModel": BaseModel, "Amenity": Amenity, "City": City,
+             "Place": Place, "Review": Review, "State": State, "User": User}
+
 
 class HBNBCommand(cmd.Cmd):
-    
+
     prompt = "(hbnb) "
 
     def do_create(self, inp):
+        """ Creates a new instance of a given class """
+
         words = str.split(inp)
         kwargs = {}
         if (len(words) == 0):
@@ -34,6 +35,9 @@ class HBNBCommand(cmd.Cmd):
             print(instance.id)
 
     def do_show(self, inp):
+        """ Prints the string representation of an instance
+        based on the class name and id """
+
         words = str.split(inp)
         if (len(words) == 0):
             print("** class name missing **")
@@ -54,6 +58,8 @@ class HBNBCommand(cmd.Cmd):
             print("** no instance found **")
 
     def do_destroy(self, inp):
+        """ Deletes an instance based on the class name and id """
+
         words = str.split(inp)
         if (len(words) == 0):
             print("** class name missing **")
@@ -72,6 +78,9 @@ class HBNBCommand(cmd.Cmd):
             print("** no instance found **")
 
     def do_all(self, inp):
+        """ Prints all string representation of all
+        instances based or not on the class name. """
+
         words = str.split(inp)
         new_list = []
         if (len(words) == 0):
@@ -84,9 +93,12 @@ class HBNBCommand(cmd.Cmd):
             for key in models.storage.all():
                 if key.startswith(words[0]):
                         new_list.append(str(models.storage.all()[key]))
-        print (new_list)
+        print(new_list)
 
     def do_update(self, inp):
+        """  Updates an instance based on the class
+        name and id by adding or updating attribute """
+
         words = str.split(inp)
         if (len(words) == 0):
             print("** class name missing **")
@@ -112,10 +124,12 @@ class HBNBCommand(cmd.Cmd):
     def do_quit(self, inp):
         """Quit command to exit the program\n"""
         return True
+
     def emptyline(self):
         pass
 
     do_EOF = do_quit
+
 
 if __name__ == '__main__':
     p = HBNBCommand()
