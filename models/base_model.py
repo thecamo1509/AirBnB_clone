@@ -41,3 +41,6 @@ class BaseModel():
         new_dir["created_at"] = self.created_at.isoformat()
         new_dir["updated_at"] = self.updated_at.isoformat()
         return(new_dir)
+
+    def delete(self):
+        models.storage.delete(self)

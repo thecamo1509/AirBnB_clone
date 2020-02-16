@@ -23,6 +23,11 @@ class FileStorage():
         with open(self.__file_path, "w") as f:
             f.write(myjson)
 
+    def delete(self, obj=None):
+        if obj is not None:
+            del self.__objects[obj.__class__.__name__ + '.' + obj.id]
+            self.save()
+
     def reload(self):
         if path.isfile(self.__file_path):
             with open(self.__file_path, "r") as f:
@@ -30,4 +35,3 @@ class FileStorage():
                 for key, value in json_loads.items():
                     obj = BaseModel(**value)
                     self.__objects.update({key: obj})
-                    print(self.__objects[key], ".............AHHHHHH!!!!")
