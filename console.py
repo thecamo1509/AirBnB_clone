@@ -5,8 +5,9 @@
 import cmd
 import models
 from models.base_model import BaseModel
+from models.user import User
 
-all_class = ["BaseModel"]
+all_class = {"BaseModel": BaseModel, "User": User}
 
 class HBNBCommand(cmd.Cmd):
     
@@ -14,6 +15,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_create(self, inp):
         words = str.split(inp)
+        kwargs = {}
         if (len(words) == 0):
             print("** class name missing **")
             return (False)
@@ -21,7 +23,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
             return (False)
         else:
-            instance = BaseModel()
+            instance = all_class[words[0]](**kwargs)
             instance.save()
             print(instance.id)
 
@@ -35,6 +37,9 @@ class HBNBCommand(cmd.Cmd):
             return (False)
         if (len(words) < 2):
             print("** instance id missing **")
+            return (False)
+        if (words[0] not in all_class):
+            print("** class doesn't exist **")
             return (False)
         key = words[0] + "." + words[1]
         if key in models.storage.all():
