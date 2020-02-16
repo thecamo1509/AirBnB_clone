@@ -1,9 +1,27 @@
 #!/usr/bin/python3
 
 from models.base_model import BaseModel
+"""
+Public class that inherit from BaseModel
+"""
 
 
 class Place(BaseModel):
+    """ Class Place
+        Attributes:
+        -----------
+        city_id: string it will be the City.id
+        user_id: string it will be the User.id
+        name: string City name
+        description: string
+        number_rooms: integer
+        number_bathrooms: integer
+        max_guest: integer
+        price_by_night: integer
+        latitude: float
+        longitude: float
+        amenity_ids: list
+    """
     city_id = ""
     user_id = ""
     name = ""
