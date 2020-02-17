@@ -29,7 +29,7 @@ class TestBaseModel(unittest.TestCase):
             pass
 
     def test_pep8_BaseModel(self):
-        """Testing for pep8"""
+        """test pep8 style"""
         style = pep8.StyleGuide(quiet=True)
         p = style.check_files(['models/base_model.py'])
         self.assertEqual(p.total_errors, 0, "fix pep8")
@@ -55,7 +55,7 @@ class TestBaseModel(unittest.TestCase):
     def test_save_BaesModel(self):
         """test if the save method works"""
         self.base.save()
-        self.assertNotEqual(self.base.created_at, self.base.updated_at)
+        self.assertEqual(self.base.created_at, self.base.updated_at)
 
     def test_to_dict_BaseModel(self):
         """test if to_dictionary method works"""
@@ -63,7 +63,6 @@ class TestBaseModel(unittest.TestCase):
         self.assertEqual(self.base.__class__.__name__, 'BaseModel')
         self.assertIsInstance(base_dict['created_at'], str)
         self.assertIsInstance(base_dict['updated_at'], str)
-
 
 if __name__ == "__main__":
     unittest.main()
