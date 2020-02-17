@@ -1,7 +1,15 @@
 import json
 import os.path as path
-from ..base_model import BaseModel
+from models.base_model import BaseModel
+from models.user import User
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.place import Place
+from models.review import Review
 
+all_class = {"BaseModel": BaseModel, "Amenity": Amenity, "City": City,
+             "Place": Place, "Review": Review, "State": State, "User": User}
 
 class FileStorage():
     """
@@ -54,8 +62,6 @@ class FileStorage():
         """
         if path.isfile(self.__file_path):
             with open(self.__file_path, "r") as f:
-                json_loads = json.load(f)
-                for key, value in json_loads.items():
-                    splitted = key.split(".")
-                    obj = globals()[splitted[0]](**value)
-                    self.__objects.update({key: obj})
+                jason_file = json.load(f)
+                for key in jason_file:
+                    self.__objects[key] = all_class[jason_file[key]["__class__"]](**jason_file[key])
