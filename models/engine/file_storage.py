@@ -56,5 +56,6 @@ class FileStorage():
             with open(self.__file_path, "r") as f:
                 json_loads = json.load(f)
                 for key, value in json_loads.items():
-                    obj = BaseModel(**value)
+                    splitted = key.split(".")
+                    obj = globals()[splitted[0]](**value)
                     self.__objects.update({key: obj})
