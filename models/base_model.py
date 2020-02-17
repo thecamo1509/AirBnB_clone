@@ -6,8 +6,16 @@ from datetime import datetime
 
 
 class BaseModel():
+    """ Class BaseModel: that defines all common attributes/methods
+        for other classes
+    """
     def __init__(self, *args, **kwargs):
-
+        """ Constructor class
+        Attributes
+        ----------
+        *args: list argument (won’t be used)
+        **kwargs: dictionary of arguments
+        """
         if (kwargs):
             for key, value in kwargs.items():
                 if key == 'id':
@@ -29,13 +37,24 @@ class BaseModel():
             models.storage.new(self)
 
     def __str__(self):
+        """
+        Method to return a string
+        """
         return "[{:s}] ({:s}) {}".format(self.__class__.__name__, self.id,
                                          self.__dict__)
 
     def save(self):
+        """
+        Method updates the public instance attribute updated_at
+        with the current datetime
+        """
         models.storage.save()
 
     def to_dict(self):
+        """
+        Method to returns a dictionary containing all keys/values
+        of __dict__ of the instance
+        """
         new_dir = self.__dict__.copy()
         new_dir["__class__"] = self.__class__.__name__
         new_dir["created_at"] = self.created_at.isoformat()
@@ -43,4 +62,7 @@ class BaseModel():
         return(new_dir)
 
     def delete(self):
+        """
+        Method to deletes an instance based on the class name
+        """
         models.storage.delete(self)

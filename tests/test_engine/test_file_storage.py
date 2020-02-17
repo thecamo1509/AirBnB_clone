@@ -25,11 +25,15 @@ class TestFileStorage(unittest.TestCase):
         cls.user.last_name = "Yo"
         cls.user.email = "1234@yahoo.com"
         cls.storage = FileStorage()
+        cls.path = "file.json"
 
     @classmethod
     def teardown(cls):
         """at the end of the test this will tear it down"""
         del cls.user
+        """ if delete the file """
+        if os.path.exists("file.json"):
+            os.remove("file.json")
 
     def tearDown(self):
         """teardown"""
@@ -43,6 +47,25 @@ class TestFileStorage(unittest.TestCase):
         style = pep8.StyleGuide(quiet=True)
         p = style.check_files(['models/engine/file_storage.py'])
         self.assertEqual(p.total_errors, 0, "fix pep8")
+
+    def test_docstring(self):
+        """
+        Test docstring
+        """
+        self.assertIsNotNone(FileStorage.__doc__)
+
+    def test_documentation(self):
+        """
+        Test documentation, created and not empty
+        """
+        self.assertTrue(FileStorage.all.__doc__)
+        self.assertIsNotNone(FileStorage.all.__doc__)
+        self.assertTrue(FileStorage.new.__doc__)
+        self.assertIsNotNone(FileStorage.new.__doc__)
+        self.assertTrue(FileStorage.save.__doc__)
+        self.assertIsNotNone(FileStorage.save.__doc__)
+        self.assertTrue(FileStorage.reload.__doc__)
+        self.assertIsNotNone(FileStorage.reload.__doc__)
 
     def test_all(self):
         """tests if all works in File Storage"""
@@ -91,6 +114,19 @@ class TestFileStorage(unittest.TestCase):
                 self.assertEqual(line, "{}")
         self.assertIs(self.storage.reload(), None)
 
+    def test_file_path(self):
+        """
+        Test file_self.path exist
+        """
+        self.assertEqual(FileStorage._FileStorage__file_path, self.path)
+
+    def test_objects_exist(self):
+        """
+        Test __objects exist and was created
+        """
+        obj = self.storage.all()
+        self.assertEqual(FileStorage._FileStorage__objects, obj)
+        self.assertTrue(FileStorage._FileStorage__objects)
 
 if __name__ == "__main__":
     unittest.main()
