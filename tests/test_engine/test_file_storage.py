@@ -47,7 +47,7 @@ class TestFileStorage(unittest.TestCase):
         style = pep8.StyleGuide(quiet=True)
         p = style.check_files(['models/engine/file_storage.py'])
         self.assertEqual(p.total_errors, 0, "fix pep8")
-
+    
     def test_docstring(self):
         """
         Test docstring
@@ -80,7 +80,7 @@ class TestFileStorage(unittest.TestCase):
         storage = FileStorage()
         obj = storage.all()
         user = User()
-        user.id = 123455
+        user.id = "123455"
         user.name = "Kevin"
         storage.new(user)
         key = user.__class__.__name__ + "." + str(user.id)
@@ -113,20 +113,6 @@ class TestFileStorage(unittest.TestCase):
             for line in r:
                 self.assertEqual(line, "{}")
         self.assertIs(self.storage.reload(), None)
-
-    def test_file_path(self):
-        """
-        Test file_self.path exist
-        """
-        self.assertEqual(FileStorage._FileStorage__file_path, self.path)
-
-    def test_objects_exist(self):
-        """
-        Test __objects exist and was created
-        """
-        obj = self.storage.all()
-        self.assertEqual(FileStorage._FileStorage__objects, obj)
-        self.assertTrue(FileStorage._FileStorage__objects)
 
 if __name__ == "__main__":
     unittest.main()
