@@ -96,7 +96,7 @@ class HBNBCommand(cmd.Cmd):
         else:
             for key in models.storage.all():
                 if key.startswith(words[0]):
-                        new_list.append(str(models.storage.all()[key]))
+                    new_list.append(str(models.storage.all()[key]))
         print(new_list)
 
     def do_update(self, inp):
@@ -127,7 +127,8 @@ class HBNBCommand(cmd.Cmd):
                         words[3] = float(word[3])
                 key = words[0] + "." + words[1]
                 if key in models.storage.all():
-                    setattr(models.storage.all()[key], words[2], words[3])
+                    word_ok = words[3].replace('"', '')
+                    setattr(models.storage.all()[key], words[2], str(word_ok))
                     models.storage.all()[key].save()
 
     def do_quit(self, inp):
