@@ -13,6 +13,10 @@ from models.review import Review
 all_class = {"BaseModel": BaseModel, "Amenity": Amenity, "City": City,
              "Place": Place, "Review": Review, "State": State, "User": User}
 
+integers = ["number_rooms", "number_bathrooms", "max_guest", "price by night"]
+
+floats = ["latitude", "longitude"]
+
 
 class HBNBCommand(cmd.Cmd):
 
@@ -116,6 +120,11 @@ class HBNBCommand(cmd.Cmd):
             if words[0] not in all_class:
                 print("** class doesn't exists **")
             else:
+                if words[0] == "Place":
+                    if words[3] in integers:
+                        words[3] = int(words[3])
+                    if words[3] in floats:
+                        words[3] = float(word[3])
                 key = words[0] + "." + words[1]
                 if key in models.storage.all():
                     setattr(models.storage.all()[key], words[2], words[3])
