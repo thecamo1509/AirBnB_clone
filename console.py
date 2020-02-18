@@ -108,7 +108,10 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
             return (False)
         elif (len(words) < 2):
-            print("** instance id missing **")
+            if words[0] not in all_class:
+                print("** class doesn't exists **")
+            else:
+                print("** instance id missing **")
             return (False)
         elif (len(words) < 3):
             print("** attribute name missing **")
