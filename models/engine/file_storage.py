@@ -8,8 +8,9 @@ from models.amenity import Amenity
 from models.place import Place
 from models.review import Review
 
-all_class = {"BaseModel": BaseModel, "Amenity": Amenity, "City": City,
-             "Place": Place, "Review": Review, "State": State, "User": User}
+ac = {"BaseModel": BaseModel, "Amenity": Amenity, "City": City,
+      "Place": Place, "Review": Review, "State": State, "User": User}
+
 
 class FileStorage():
     """
@@ -62,6 +63,6 @@ class FileStorage():
         """
         if path.isfile(self.__file_path):
             with open(self.__file_path, "r") as f:
-                jason_file = json.load(f)
-                for key in jason_file:
-                    self.__objects[key] = all_class[jason_file[key]["__class__"]](**jason_file[key])
+                jf = json.load(f)
+                for key in jf:
+                    self.__objects[key] = ac[jf[key]["__class__"]](**jf[key])
