@@ -114,7 +114,11 @@ class HBNBCommand(cmd.Cmd):
                 print("** instance id missing **")
             return (False)
         elif (len(words) < 3):
-            print("** attribute name missing **")
+            key = words[0] + "." + words[1]
+            if key not in models.storage.all():
+                print("** no instance found **")
+            else:
+                print("** attribute name missing **")
             return (False)
         elif (len(words) < 4):
             print("** value missing **")
