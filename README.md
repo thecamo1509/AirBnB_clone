@@ -1,7 +1,3 @@
-![]
-https://holbertonintranet.s3.amazonaws.com/uploads/medias/2018/6/65f4a1dd9c51265f49d0.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIARDDGGGOUZGDONYM4%2F20200218%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20200218T144402Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=163d6a5a6306dbc24751bf3efcc34707df195189826c5982018d15babbd9d8d5
-![]
-
 # AirBnB clone - The console
 ____
 
@@ -18,10 +14,8 @@ The first piece is to manipulate a powerful storage system. This storage engine 
 This abstraction will also allow you to change the type of storage easily without updating all of your codebase.
 
 The console will be a tool to validate this storage engine
-![]
-https://holbertonintranet.s3.amazonaws.com/uploads/medias/2018/6/815046647d23428a14ca.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIARDDGGGOUZGDONYM4%2F20200218%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20200218T160026Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=4351418eb4d4f36fce4c08b4d785b7a24508e09dc78a809471f4357322ac1473
-![]
 ___
+
 ## Directories and Files
 ___
 ### Directories
@@ -113,6 +107,6 @@ ___
 ___
 
 ### Authors
-Andrea Méndez Mesias <1159@holbertonschool.com>
-Camilo Morales <1160@holbertonschool.com>
-Paula Fuentes <1076@holbertonschool.com>
+Andrea Méndez Mesias <1159@holbertonschool.com>\n
+Camilo Morales <1160@holbertonschool.com>\n
+Paula Fuentes <1076@holbertonschool.com>\n
