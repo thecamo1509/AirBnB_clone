@@ -107,6 +107,6 @@ ___
 ___
 
 ### Authors
-Andrea Méndez Mesias <1159@holbertonschool.com>\n
-Camilo Morales <1160@holbertonschool.com>\n
-Paula Fuentes <1076@holbertonschool.com>\n
+- Andrea Méndez Mesias - email: 1159@holbertonschool.com - GitHub user: andreammgcol
+- Camilo Morales - email: 1160@holbertonschool.com - GitHub user: thecamo1509
+- Paula Fuentes - email: 1076@holbertonschool.com - GitHub user: pafuentess
