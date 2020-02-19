@@ -114,6 +114,37 @@ class TestFileStorage(unittest.TestCase):
                 self.assertEqual(line, "{}")
         self.assertIs(self.storage.reload(), None)
 
+    def test_file_path(self):
+        """
+        Test to see if the file_self.path exist
+        """
+        self.assertEqual(FileStorage._FileStorage__file_path, self.path)
+
+    def test_objects_exist_storage(self):
+        """
+        Test if __objects exist and was created
+        """
+        dic = self.storage.all()
+        self.assertEqual(FileStorage._FileStorage__objects, dic)
+        self.assertTrue(FileStorage._FileStorage__objects)
+
+    def test_save(self):
+        """
+        Testing the save method
+        """
+        bm = BaseModel()
+        bm.save()
+        self.assertTrue(os.path.exists(self.path))
+        bm.name = "Testing"
+        bm.number = 1
+        bm.save()
+        self.assertTrue(os.path.exists(self.path))
+        dic = {}
+        with open('file.json', 'r') as fjson:
+            dic = json.loads(fjson.read())
+        bm_key = bm.__class__.__name__ + '.' + bm.id
+        self.assertDictEqual(bm.to_dict(), dic[bm_key])
+
 
 if __name__ == "__main__":
     unittest.main()
