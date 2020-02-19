@@ -159,6 +159,14 @@ class HBNBCommand(cmd.Cmd):
         """ exit console """
         return True
 
+    def default(self, inp):
+        words = inp.split(".")
+        newlist = []
+        if words[0] in all_class and words[1] == "all()":
+            self.do_all(words[0])
+        else:
+            print("*** Unknown syntax: {}".format(inp))
+
 
 if __name__ == '__main__':
     p = HBNBCommand()
