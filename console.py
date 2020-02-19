@@ -135,7 +135,7 @@ class HBNBCommand(cmd.Cmd):
                     if words[2] in integers:
                         words[3] = int(words[3])
                     if words[2] in floats:
-                        words[3] = float(word[3])
+                        words[3] = float(words[3])
                 key = words[0] + "." + words[1]
                 if key in models.storage.all():
                     word_ok = words[3].replace('"', '')
