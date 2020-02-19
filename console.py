@@ -111,7 +111,7 @@ class HBNBCommand(cmd.Cmd):
             return (False)
         elif (len(words) < 2):
             if words[0] not in all_class:
-                print("** class doesn't exists **")
+                print("** class doesn't exist **")
             else:
                 print("** instance id missing **")
             return (False)
