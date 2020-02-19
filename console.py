@@ -162,8 +162,18 @@ class HBNBCommand(cmd.Cmd):
     def default(self, inp):
         words = inp.split(".")
         newlist = []
+        count = 0
         if words[0] in all_class and words[1] == "all()":
             self.do_all(words[0])
+        elif words[0] in all_class and words[1] == "count()":
+            if (words[0] not in all_class):
+                print("** class doesn't exist **")
+                return (False)
+            else:
+                for key in models.storage.all():
+                    if key.startswith(words[0]):
+                        count += 1
+                print(count)
         else:
             print("*** Unknown syntax: {}".format(inp))
 
