@@ -128,8 +128,13 @@ class HBNBCommand(cmd.Cmd):
             print("** value missing **")
             return (False)
         else:
+            key = words[0] + "." + words[1]
             if words[0] not in all_class:
                 print("** class doesn't exists **")
+                return (False)
+            if key not in models.storage.all():
+                print("** no instance found **")
+                return (False)
             else:
                 if words[0] == "Place":
                     if words[2] in integers:
