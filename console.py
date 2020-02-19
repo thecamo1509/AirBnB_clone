@@ -15,7 +15,7 @@ from models.review import Review
 all_class = {"BaseModel": BaseModel, "Amenity": Amenity, "City": City,
              "Place": Place, "Review": Review, "State": State, "User": User}
 
-integers = ["number_rooms", "number_bathrooms", "max_guest", "price by night"]
+integers = ["number_rooms", "number_bathrooms", "max_guest", "price_by_night"]
 
 floats = ["latitude", "longitude"]
 
