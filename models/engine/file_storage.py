@@ -1,3 +1,7 @@
+#!/usr/bin/python3
+"""
+    file storage
+"""
 import json
 import os.path as path
 from models.base_model import BaseModel
@@ -22,6 +26,7 @@ class FileStorage():
     __objects: dictionary - empty but will store all objects
     """
     def __init__(self):
+        """ """
         self.__file_path = "file.json"
         self.__objects = {}
 

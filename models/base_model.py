@@ -8,7 +8,7 @@ import models
 from datetime import datetime
 
 
-class BaseModel():
+class BaseModel:
     """ Class BaseModel: that defines all common attributes/methods
         for other classes
     """
