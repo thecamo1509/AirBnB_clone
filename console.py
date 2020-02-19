@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 
+""" Console """
+
 import cmd
 import models
 from models.base_model import BaseModel
@@ -145,9 +147,12 @@ class HBNBCommand(cmd.Cmd):
         return True
 
     def emptyline(self):
+        """ empty line """
         pass
 
-    do_EOF = do_quit
+    def do_EOF(sel, arg):
+        """ exit console """
+        return True
 
 
 if __name__ == '__main__':
