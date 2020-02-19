@@ -132,9 +132,9 @@ class HBNBCommand(cmd.Cmd):
                 print("** class doesn't exists **")
             else:
                 if words[0] == "Place":
-                    if words[3] in integers:
+                    if words[2] in integers:
                         words[3] = int(words[3])
-                    if words[3] in floats:
+                    if words[2] in floats:
                         words[3] = float(word[3])
                 key = words[0] + "." + words[1]
                 if key in models.storage.all():
