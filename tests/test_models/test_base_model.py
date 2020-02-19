@@ -56,3 +56,14 @@ class TestBaseModel(unittest.TestCase):
         """test if the save method works"""
         self.base.save()
         self.assertEqual(self.base.created_at, self.base.updated_at)
+
+    def test_to_dict_BaseModel(self):
+        """test if to_dictionary method works"""
+        base_dict = self.base.to_dict()
+        self.assertEqual(self.base.__class__.__name__, 'BaseModel')
+        self.assertIsInstance(base_dict['created_at'], str)
+        self.assertIsInstance(base_dict['updated_at'], str)
+
+
+if __name__ == "__main__":
+    unittest.main()
