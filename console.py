@@ -183,16 +183,17 @@ class HBNBCommand(cmd.Cmd):
         elif words[0] in all_class and cp2 == "destroy":
             self.do_destroy(words[0] + " " + cp[1])
         elif words[0] in all_class and cp2 == "update":
-            if cp[2] == ", {":
-                cp3[1] = cp3[1].strip(')')
-                cp3[1] = "{" + cp3[1]
-                dicci = json.loads(cp3[1])
-                for key, value in dicci.items():
-                    a = words[0]+" "+cp[1] + " " + str(key) + " " + str(value)
-                    self.do_update(a)
-            else:
+            if "{" not in words[1]:
                 self.do_update(words[0]+" "+cp[1]+" "+cp[3]+" "
                                + cp[5])
+            else:
+                cp3[1] = cp3[1].strip(')')
+                cp3[1] = "{" + cp3[1]
+                cp3[1] = cp3[1].replace("'", '"')
+                dicci = json.loads(cp3[1])
+                for key, value in dicci.items():
+                    a = words[0]+" "+cp[1] + " " + key + " " + str(value)
+                    self.do_update(a)
 
 
 if __name__ == '__main__':
