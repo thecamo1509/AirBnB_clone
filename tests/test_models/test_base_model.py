@@ -52,11 +52,6 @@ class TestBaseModel(unittest.TestCase):
         """test if the base is an instance of type BaseModel"""
         self.assertTrue(isinstance(self.base, BaseModel))
 
-    def test_save_BaesModel(self):
-        """test if the save method works"""
-        self.base.save()
-        self.assertEqual(self.base.created_at, self.base.updated_at)
-
     def test_to_dict_BaseModel(self):
         """test if to_dictionary method works"""
         base_dict = self.base.to_dict()
