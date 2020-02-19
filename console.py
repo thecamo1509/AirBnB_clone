@@ -118,7 +118,7 @@ class HBNBCommand(cmd.Cmd):
         elif (len(words) < 3):
             key = words[0] + "." + words[1]
             if words[0] not in all_class:
-                print("** class doesn't exists **")
+                print("** class doesn't exist **")
             elif key not in models.storage.all():
                 print("** no instance found **")
             else:
@@ -130,7 +130,7 @@ class HBNBCommand(cmd.Cmd):
         else:
             key = words[0] + "." + words[1]
             if words[0] not in all_class:
-                print("** class doesn't exists **")
+                print("** class doesn't exist **")
                 return (False)
             if key not in models.storage.all():
                 print("** no instance found **")
