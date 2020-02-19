@@ -174,8 +174,10 @@ class HBNBCommand(cmd.Cmd):
                     if key.startswith(words[0]):
                         count += 1
                 print(count)
-        else:
-            print("*** Unknown syntax: {}".format(inp))
+        cp_words = words[1].split('"')
+        cp2_words = cp_words[0].strip('(')
+        if words[0] in all_class and cp2_words == "show":
+            self.do_show(words[0] + " " + cp_words[1])
 
 
 if __name__ == '__main__':
