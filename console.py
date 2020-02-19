@@ -4,6 +4,7 @@
 
 import cmd
 import models
+import json
 from models.base_model import BaseModel
 from models.user import User
 from models.state import State
@@ -174,15 +175,24 @@ class HBNBCommand(cmd.Cmd):
                     if key.startswith(words[0]):
                         count += 1
                 print(count)
-        cp_words = words[1].split('"')
-        cp2_words = cp_words[0].strip('(')
-        if words[0] in all_class and cp2_words == "show":
-            self.do_show(words[0] + " " + cp_words[1])
-        elif words[0] in all_class and cp2_words == "destroy":
-            self.do_destroy(words[0] + " " + cp_words[1])
-        elif words[0] in all_class and cp2_words == "update":
-            self.do_update(words[0]+" "+cp_words[1]+" "+cp_words[3]+" "
-                           + cp_words[5])
+        cp = words[1].split('"')
+        cp2 = cp[0].strip('(')
+        cp3 = words[1].split('{')
+        if words[0] in all_class and cp2 == "show":
+            self.do_show(words[0] + " " + cp[1])
+        elif words[0] in all_class and cp2 == "destroy":
+            self.do_destroy(words[0] + " " + cp[1])
+        elif words[0] in all_class and cp2 == "update":
+            if cp[2] == ", {":
+                cp3[1] = cp3[1].strip(')')
+                cp3[1] = "{" + cp3[1]
+                dicci = json.loads(cp3[1])
+                for key, value in dicci.items():
+                    a = words[0]+" "+cp[1] + " " + str(key) + " " + str(value)
+                    self.do_update(a)
+            else:
+                self.do_update(words[0]+" "+cp[1]+" "+cp[3]+" "
+                               + cp[5])
 
 
 if __name__ == '__main__':
