@@ -180,6 +180,9 @@ class HBNBCommand(cmd.Cmd):
             self.do_show(words[0] + " " + cp_words[1])
         elif words[0] in all_class and cp2_words == "destroy":
             self.do_destroy(words[0] + " " + cp_words[1])
+        elif words[0] in all_class and cp2_words == "update":
+            self.do_update(words[0]+" "+cp_words[1]+" "+cp_words[3]+" "
+                           + cp_words[5])
 
 
 if __name__ == '__main__':
