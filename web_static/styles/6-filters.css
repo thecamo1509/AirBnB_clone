@@ -22,31 +22,56 @@ button:hover{
     opacity: 90%;
 }
 
-.locations{
+div.locations{
     height: 100%;
     width: 25%;
-    padding-left: 40px;
     border-right: 1px solid #DDDDDD;
     position: absolute;
-}
-
-.locations:focus .popover{
-    display: block;
+    left: 4%;
 }
 
 .popover{
-    display: none;
+    visibility: hidden;
     background-color: #FAFAFA;
-    width: 25%;
+    position: relative;
+    width: 100%;
+    border-radius: 0px 0px 4px 4px;
     border: 1px solid #DDDDDD;
-    border-radius: 4px;
+    list-style-type: none;
+    z-index: 100;
+    text-align: left;
+    text-indent: -15px;
+    border-top: none;
+    left: -41px;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
-.amenities{
+li
+{
+    text-align: left;
+    text-indent: 5px;
+    position: relative;
+    line-height: 30px;
+}
+
+div.amenities{
     height: 100%;
     width: 25%;
     position: absolute;
-    padding-left: 33%;
+    left: 33%;
+}
+
+div.locations:hover .popover{
+    visibility: visible;
+}
+
+div.amenities:hover .popover{
+    visibility: visible;
+}
+
+h2{
+    font-size: 16px;
 }
 
 h3{
