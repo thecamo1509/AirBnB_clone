@@ -1,16 +1,11 @@
-header{
-    background-color:white;
+header {
+    background: white;
     height: 70px;
     width: 100%;
     border-bottom: 1px solid #CCCCCC;
 }
-
-div.h-logo{
-    margin-left: 20px;
-    background-image: url(/web_static/images/logo.png);
-    width: 142px;
-    height: 60px;
-    top: 5px;
-    bottom: 5px;
-    position: absolute;
+header .logo {
+    background: url("../images/logo.png") no-repeat;
+    left: 20px;
+    height: 100%;
 }

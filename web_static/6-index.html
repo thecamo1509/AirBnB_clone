@@ -1,44 +1,54 @@
-<html>
-    <head>
-        <link rel="stylesheet" href="/web_static/styles/4-common.css">
-        <link rel="stylesheet" href="/web_static/styles/3-header.css">
-        <link rel="stylesheet" href="/web_static/styles/3-footer.css">
-        <link rel="stylesheet" href="/web_static/styles/6-filters.css">
-        <link rel="icon" href="/web_static/images/icon.png">
-    </head>
-    <body>
-        <header>
-            <div class="h-logo"></div>
-        </header>
-        <div class="container">
-                <section class="filters">
-                    <button>Search</button>
-                    <div class="locations">
-                        <h3>States</h3>
-                        <h4>Antioquia, Risaralda...</h4>
-                        <ul class="popover">
-                            <h2>Antioquia:</h2>
-                            <li>Medellin</li>
-                            <li>Envigado</li>
-                            <h2>Risaralda:</h2>
-                            <li>Pereira</li>
-                            <li>Dosquebradas</li>
-                        </ul>
-                    </div>
-                    <div class="amenities">
-                        <h3>Amenities</h3>
-                        <h4>Internet, Bathrooms...</h4>
-                        <ul class="popover">
-                                <li>Internet</li>
-                                <li>Kitchen</li>
-                                <li>Bathrooms</li>
-                                <li>Bedrooms</li>
-                        </ul>
-                    </div>
-                </section>
-        </div>
-        <footer>
-                <p>Holberton School</p>
-        </footer>
-    </body>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" type="text/css" href="styles/4-common.css">
+    <link rel="stylesheet" type="text/css" href="styles/3-header.css">
+    <link rel="stylesheet" type="text/css" href="styles/3-footer.css">
+    <link rel="stylesheet" type="text/css" href="styles/6-filters.css">
+    <link rel="icon" href="images/icon.png" />
+    <title>AirBnb Clone</title>
+  </head>
+  <body>
+    <header>
+      <div class="logo"></div>
+    </header>
+    <div class="container">
+      <section class="filters">
+	<div class="locations">
+	  <h3>States</h3>
+	  <h4>Antioquia, Risaralda</h4>
+	  <div class="popover">
+	    <ul>
+		<h2>Antioquia:</h2>
+		<ul>
+		  <li>Medellin</li>
+		  <li>Envigado</li>
+		</ul>
+		<h2>Risaralda:</h2>
+		<ul>
+		  <li>Pereira</li>
+		  <li>Dosquebradas</li>
+		</ul>
+	    </ul>
+	  </div>
+	</div>
+	<div class="amenities">
+	  <h3>Amenities</h3>
+	  <h4>Internet, Kitchen</h4>
+	  <div class="popover">
+	    <ul>
+	      <li>Internet</li>
+	      <li>TV</li>
+	      <li>Kitchen</li>
+	      <li>BedRooms</li>
+	    </ul>
+	  </div>
+	</div>
+	<button type="button">Search</button>
+      </section>
+    </div>
+    <footer>
+      <p>Holberton School</p>
+    </footer>
+  </body>
 </html>
